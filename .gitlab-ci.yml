@@ -1,0 +1,14 @@
+image: node:12.13.0
+
+stages:
+  - lint
+
+job1:
+  stage: lint
+  tags:
+    - build
+  script:
+    - npm config ls
+    - npm install
+    - npm run lint
+    - npm run build
