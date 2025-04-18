@@ -42,7 +42,16 @@ function wrapLoading(func) {
 }
 wrapLoading(() => Promise.resolve())
 
-const routes = []
+const routes = [
+  {
+    path: '/',
+    component: () => import('@/views/test.vue'),
+  },
+  {
+    path: '/Clipboard',
+    component: () => import('@/views/clipboard.vue'),
+  },
+]
 
 const router = new VueRouter({
   routes,
