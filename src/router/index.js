@@ -48,8 +48,12 @@ const routes = [
     component: () => import('@/views/test.vue'),
   },
   {
-    path: '/Clipboard',
+    path: '/clipboard',
     component: () => import('@/views/clipboard.vue'),
+  },
+  {
+    path: '/router-test',
+    component: () => import('@/views/routertest/index.vue'),
   },
 ]
 
