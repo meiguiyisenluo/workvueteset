@@ -55,6 +55,10 @@ const routes = [
     path: '/router-test',
     component: () => import('@/views/routertest/index.vue'),
   },
+  {
+    path: '/dragball-test',
+    component: () => import('@/views/dragballtest/index.vue'),
+  },
 ]
 
 const router = new VueRouter({
