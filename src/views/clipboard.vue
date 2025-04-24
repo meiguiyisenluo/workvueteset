@@ -18,11 +18,39 @@ export default {
       text: '123',
     }
   },
+  created() {
+    this.readClipboardPeriodically()
+    document.addEventListener('copy', this.onCopy)
+  },
+  beforeDestroy() {
+    document.removeEventListener('copy', this.onCopy)
+  },
   methods: {
+    async readClipboardPeriodically() {
+      window.document.addEventListener('visibilitychange', () => {
+        if (!document.hidden || document.visibilityState == 'visible') {
+          const interval = setInterval(async () => {
+            if (!document.hasFocus()) return
+            clearInterval(interval)
+            try {
+              const text = await navigator.clipboard.readText()
+              alert('用户复制的文本是：' + text)
+            } catch (err) {
+              console.log('Failed to read clipboard:', err)
+            }
+          }, 100)
+        }
+      })
+    },
+
+    onCopy() {
+      const selection = window.getSelection().toString() // 获取用户选择的文本
+      alert('用户复制的文本是：' + selection)
+    },
     async getClipboardContents() {
       try {
         const text = await navigator.clipboard.readText()
-        this.text = text
+        alert('用户复制的文本是：' + text)
       } catch (error) {
         alert('Failed to read clipboard contents: ' + error)
       }
