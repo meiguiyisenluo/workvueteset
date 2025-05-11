@@ -59,6 +59,10 @@ const routes = [
     path: '/dragball-test',
     component: () => import('@/views/dragballtest/index.vue'),
   },
+  {
+    path: '/Trickle-ICE',
+    component: () => import('@/views/Trickle-ICE.vue'),
+  },
 ]
 
 const router = new VueRouter({

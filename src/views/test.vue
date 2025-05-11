@@ -69,7 +69,7 @@ export default {
     },
 
     tel() {
-      const link = document.createElement('a')
+      let link = document.createElement('a')
       link.href = `tel:${15914203799}`
       link.click()
       link = null
