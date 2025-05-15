@@ -36,12 +36,52 @@
 
     <br />
 
+    <div>{{ entry }}</div>
+
     <div>V1</div>
   </div>
 </template>
 
 <script>
+function loadJs(src) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script')
+    script.onload = resolve
+    script.onerror = reject
+    script.src = src
+    document.head.appendChild(script)
+  })
+}
+
 export default {
+  data() {
+    return {
+      entry: {},
+    }
+  },
+  created() {
+    const p1 = new Promise((resolve) => {
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntriesByType('resource')
+        entries.forEach((entry) => {
+          if (entry.name.includes('ipv6.js')) {
+            console.log(entry)
+            this.entry = entry
+            resolve(entry)
+          }
+        })
+      })
+      observer.observe({ type: 'resource', buffered: true })
+    })
+
+    const p2 = loadJs('https://cloudv6.139.com/ipv6.js')
+      .then(() => `ipv6.js 加载成功`)
+      .catch(() => 'ipv6.js 加载失败')
+
+    Promise.all([p1, p2]).then(([entry, msg]) => {
+      alert(`${msg}，耗时：${entry.duration}`)
+    })
+  },
   methods: {
     setSessionStorage() {
       sessionStorage.setItem('test', 'test')
