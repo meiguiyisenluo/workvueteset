@@ -1,6 +1,5 @@
 <template>
   <iframe
-    crossorigin="anonymous"
     src="https://html5.mail.10086.cn/html/restructure/index.html#/assistant/index?sid=00c0Nzg4NTQzNDAwMTkxMjI305BE07F7000001"
     frameborder="0"
   ></iframe>
