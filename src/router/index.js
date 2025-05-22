@@ -60,8 +60,8 @@ const routes = [
     component: () => import('@/views/dragballtest/index.vue'),
   },
   {
-    path: '/Trickle-ICE',
-    component: () => import('@/views/Trickle-ICE.vue'),
+    path: '/Iframe-Test',
+    component: () => import('@/views/Iframe-Test.vue'),
   },
 ]
 
