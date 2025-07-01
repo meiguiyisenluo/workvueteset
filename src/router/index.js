@@ -63,6 +63,10 @@ const routes = [
     path: '/Iframe-Test',
     component: () => import('@/views/Iframe-Test.vue'),
   },
+  {
+    path: '/dialog-iframe-test',
+    component: () => import('@/views/dialog-iframe-test/index.vue'),
+  },
 ]
 
 const router = new VueRouter({
