@@ -22,6 +22,7 @@
     "jsencrypt": "^3.0.0-rc.1",
     "less": "^3.12.2",
     "less-loader": "^7.0.1",
+    "libpag": "^4.2.84",
     "lodash.clonedeep": "^4.5.0",
     "lodash.debounce": "^4.0.8",
     "normalize.css": "^8.0.1",

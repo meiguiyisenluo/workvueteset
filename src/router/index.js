@@ -71,6 +71,10 @@ const routes = [
     path: '/vanPopoverTest',
     component: () => import('@/views/vanPopoverTest/index.vue'),
   },
+  {
+    path: '/imgTest',
+    component: () => import('@/views/imgTest/index.vue'),
+  },
 ]
 
 const router = new VueRouter({
