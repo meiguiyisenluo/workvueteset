@@ -1,6 +1,7 @@
 const autoprefixer = require('autoprefixer')
 const path = require('path')
 const git = require('git-rev-sync')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -12,6 +13,19 @@ module.exports = {
   // 不输出为编译警告
   runtimeCompiler: true,
   transpileDependencies: ['flatted', 'vuex-persist'],
+  configureWebpack: {
+    plugins: [
+      new CopyWebpackPlugin([
+        {
+          from: path.resolve(
+            __dirname,
+            './node_modules/libpag/lib/libpag.wasm'
+          ),
+          to: path.resolve(__dirname, './dist/js/libpag.wasm'),
+        },
+      ]),
+    ],
+  },
   chainWebpack: (config) => {
     /**
      * 删除懒加载模块的 prefetch preload，降低带宽压力
