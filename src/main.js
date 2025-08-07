@@ -4,6 +4,7 @@ import store from '@/store'
 import App from './App.vue'
 import '@/plugins/vant'
 
+// 兼容pag格式的图片组件
 import ExtImage from './components/ExtImage/Index.vue'
 Vue.component(ExtImage.name, ExtImage)
 

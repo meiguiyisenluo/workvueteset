@@ -31,28 +31,30 @@ export default {
       this.index = (this.index + 1) % this.srcs.length
     },
     mockGetData() {
-      this.dataList = [
-        {
-          id: 1,
-          name: 'fans.pag',
-          src: 'https://blog.r2.1591420.xyz/imgTest/fans.pag',
-        },
-        {
-          id: 2,
-          name: 'like.pag',
-          src: 'https://blog.r2.1591420.xyz/imgTest/like.pag',
-        },
-        {
-          id: 3,
-          name: '01.bmp',
-          src: 'https://blog.r2.1591420.xyz/imgTest/01.bmp',
-        },
-        {
-          id: 4,
-          name: '01.webp',
-          src: 'https://blog.r2.1591420.xyz/imgTest/01.webp',
-        },
-      ]
+      Promise.resolve().then(() => {
+        this.dataList = [
+          {
+            id: 1,
+            name: 'fans.pag',
+            src: 'https://blog.r2.1591420.xyz/imgTest/fans.pag',
+          },
+          {
+            id: 2,
+            name: 'like.pag',
+            src: 'https://blog.r2.1591420.xyz/imgTest/like.pag',
+          },
+          {
+            id: 3,
+            name: '01.bmp',
+            src: 'https://blog.r2.1591420.xyz/imgTest/01.bmp',
+          },
+          {
+            id: 4,
+            name: '01.webp',
+            src: 'https://blog.r2.1591420.xyz/imgTest/01.webp',
+          },
+        ]
+      })
     },
   },
 }
