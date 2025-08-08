@@ -24,7 +24,7 @@ export default {
       dataList: [],
     }
   },
-  created() {
+  mounted() {
     this.mockGetData()
   },
   methods: {
@@ -36,7 +36,8 @@ export default {
         this.dataList = [
           {
             id: 5,
-            src: 'https://plus.buy.139.com/cloudimage/dashboard/202508/1952993427494932480.pag',
+            // src: 'https://plus.buy.139.com/cloudimage/dashboard/202508/1952993427494932480.pag',
+            src: 'https://test.r2.1591420.xyz/ceshitup/pag/test1.pag',
           },
           {
             id: 1,
@@ -62,6 +63,6 @@ export default {
 </script>
 <style>
 .ExtImage {
-  width: 300px;
+  width: 100%;
 }
 </style>

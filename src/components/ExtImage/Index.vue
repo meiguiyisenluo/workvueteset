@@ -1,10 +1,17 @@
 <template>
   <component
-    :is="src.endsWith('.pag') ? 'PagImage' : 'img'"
+    :is="usePadImage ? 'PagImage' : as"
     :src="src"
     v-bind="$attrs"
     v-on="$listeners"
-  ></component>
+  >
+    <!-- <template #loading>
+      <slot name="loading"> </slot>
+    </template> -->
+    <template v-for="(_, name) in $slots" v-slot:[name]>
+      <slot :name="name" />
+    </template>
+  </component>
 </template>
 
 <script>
@@ -16,6 +23,15 @@ export default {
     src: {
       type: String,
       required: true,
+    },
+    as: {
+      type: String,
+      default: 'img',
+    },
+  },
+  computed: {
+    usePadImage() {
+      return this.src.endsWith('.pag')
     },
   },
 }
