@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div v-show="true">
+    <!-- <div>
       <button @click="toggleClick">toggle</button>
       <h2>{{ srcs[index] }}</h2>
       <ExtImage class="ExtImage" :src="srcs[index]" alt="" />
-    </div>
+    </div> -->
 
-    <div v-for="item in dataList" :key="item.id">
-      <h2>{{ item.src }}</h2>
-      <ExtImage class="ExtImage" :src="item.src" alt="" />
+    <div v-for="(src, idx) in dataList" :key="idx">
+      <h2>{{ idx + 1 }}</h2>
+      <ExtImage class="ExtImage" :src="src" alt="" />
     </div>
   </div>
 </template>
@@ -34,27 +34,29 @@ export default {
     mockGetData() {
       Promise.resolve().then(() => {
         this.dataList = [
-          {
-            id: 5,
-            // src: 'https://plus.buy.139.com/cloudimage/dashboard/202508/1952993427494932480.pag',
-            src: 'https://test.r2.1591420.xyz/ceshitup/pag/test1.pag',
-          },
-          {
-            id: 1,
-            src: 'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
-          },
-          {
-            id: 2,
-            src: 'https://test.r2.1591420.xyz/ceshitup/pag/like.pag',
-          },
-          {
-            id: 3,
-            src: 'https://test.r2.1591420.xyz/ceshitup/bmp/pepper.bmp',
-          },
-          {
-            id: 4,
-            src: 'https://test.r2.1591420.xyz/ceshitup/webp/01.webp',
-          },
+          // 'https://test.r2.1591420.xyz/ceshitup/bmp/pepper.bmp',
+          // 'https://test.r2.1591420.xyz/ceshitup/webp/01.webp',
+
+          //  'https://plus.buy.139.com/cloudimage/dashboard/202508/1952993427494932480.pag',
+
+          'https://test.r2.1591420.xyz/ceshitup/pag/test1.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/like.pag',
+
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
+          'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
         ]
       })
     },
