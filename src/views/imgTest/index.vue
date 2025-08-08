@@ -1,8 +1,10 @@
 <template>
   <div>
-    <button @click="toggleClick">toggle</button>
-    <h2>{{ srcs[index] }}</h2>
-    <ExtImage class="ExtImage" :src="srcs[index]" alt="" />
+    <div v-show="true">
+      <button @click="toggleClick">toggle</button>
+      <h2>{{ srcs[index] }}</h2>
+      <ExtImage class="ExtImage" :src="srcs[index]" alt="" />
+    </div>
 
     <div v-for="item in dataList" :key="item.id">
       <h2>{{ item.src }}</h2>
@@ -32,6 +34,10 @@ export default {
     mockGetData() {
       Promise.resolve().then(() => {
         this.dataList = [
+          {
+            id: 5,
+            src: 'https://plus.buy.139.com/cloudimage/dashboard/202508/1952993427494932480.pag',
+          },
           {
             id: 1,
             src: 'https://test.r2.1591420.xyz/ceshitup/pag/fans.pag',
