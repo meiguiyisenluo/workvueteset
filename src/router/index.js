@@ -44,6 +44,10 @@ wrapLoading(() => Promise.resolve())
 
 const routes = [
   {
+    path: '/login',
+    component: () => import('@/views/Login/Index.vue'),
+  },
+  {
     path: '/',
     component: () => import('@/views/test.vue'),
   },

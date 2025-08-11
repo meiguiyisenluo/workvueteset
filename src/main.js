@@ -8,6 +8,9 @@ import '@/plugins/vant'
 import ExtImage from './components/ExtImage/Index.vue'
 Vue.component(ExtImage.name, ExtImage)
 
+import needLogin from '@/mixins/needLogin'
+Vue.mixin(needLogin)
+
 new Vue({
   router,
   store,
