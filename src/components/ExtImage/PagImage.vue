@@ -80,8 +80,11 @@ export default {
         this.calcCanvasSize()
         // Create PAGView.
         this.pagView = await PAG.PAGView.init(this.pagFile, this.$refs.canvas, {
+          // 多个PAGView兼容，详见：https://pag.io/docs/web-play-pagfile.html#%E5%A4%9A%E4%B8%AA-pagview
+          useCanvas2D: true,
           // 关闭高清渲染，自行计算canvas宽高
           useScale: false,
+          // 首帧渲染兼容，详见：https://pag.io/docs/web-play-pagfile.html#%E9%A6%96%E5%B8%A7%E6%B8%B2%E6%9F%93
           firstFrame: false,
         })
         // Set PAGView repeat.
