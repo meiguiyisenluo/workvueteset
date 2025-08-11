@@ -85,12 +85,17 @@ export default {
           // 关闭高清渲染，自行计算canvas宽高
           useScale: false,
           // 首帧渲染兼容，详见：https://pag.io/docs/web-play-pagfile.html#%E9%A6%96%E5%B8%A7%E6%B8%B2%E6%9F%93
-          firstFrame: false,
+          firstFrame: true,
         })
         // Set PAGView repeat.
         this.pagView.setRepeatCount(0)
         // Play PAGView.
-        await this.pagView.play()
+        const startPlay = () => {
+          if (!this.pagView.isPlaying) this.pagView.play()
+        }
+        startPlay()
+        window.addEventListener('touchstart', startPlay, { once: true })
+        window.addEventListener('click', startPlay, { once: true })
       } catch (error) {
         return this.$emit('error', error)
       }
