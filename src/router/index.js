@@ -48,6 +48,10 @@ const routes = [
     component: () => import('@/views/MainLayout/index.vue'),
   },
   {
+    path: '/huangyongTest',
+    component: () => import('@/views/huangyongTest/index.vue'),
+  },
+  {
     path: '/login',
     component: () => import('@/views/Login/Index.vue'),
   },
