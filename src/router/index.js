@@ -44,11 +44,15 @@ wrapLoading(() => Promise.resolve())
 
 const routes = [
   {
+    path: '/:com(cloudphone|my|find)',
+    component: () => import('@/views/MainLayout/index.vue'),
+  },
+  {
     path: '/login',
     component: () => import('@/views/Login/Index.vue'),
   },
   {
-    path: '/',
+    path: '/test',
     component: () => import('@/views/test.vue'),
   },
   {

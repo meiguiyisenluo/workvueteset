@@ -3,6 +3,7 @@ import router from '@/router'
 import store from '@/store'
 import App from './App.vue'
 import '@/plugins/vant'
+import '@/plugins/swiper'
 
 // 兼容pag格式的图片组件
 import ExtImage from './components/ExtImage/Index.vue'
