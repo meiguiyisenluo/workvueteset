@@ -12,12 +12,6 @@
   </swiper>
 </template>
 <script>
-// 这样引入，当main-layout组件第一次加载时会触发下面三个组件的 activated
-// import cloudphone from './cloudphone.vue'
-// import find from './find.vue'
-// import my from './my.vue'
-
-// 这样引入不会
 const cloudphone = () =>
   import(/* webpackChunkName: "chunk-cloudphone" */ './cloudphone.vue')
 const find = () => import(/* webpackChunkName: "chunk-find" */ './find.vue')
@@ -85,6 +79,7 @@ export default {
   methods: {
     slideChangeTransitionEnd() {
       this.active = this.$refs.swiper.swiper.activeIndex
+      console.log('slideChangeTransitionEnd', this.active)
       this.$router.push(this.tabData[this.active].path)
     },
   },
