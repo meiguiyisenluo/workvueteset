@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-    <h2>请调节背景色{{ value }}</h2>
-    <input type="color" v-model="value" />
     <div
       class="bg"
       :style="{
@@ -24,6 +22,9 @@
         <span class="swpier-indicator-item"></span>
       </div>
     </div>
+
+    <h2>请调节背景色{{ value }}</h2>
+    <input type="color" v-model="value" />
   </div>
 </template>
 <script>
@@ -44,21 +45,18 @@ export default {
   flex-direction: column;
   .bg {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .position {
     position: absolute;
-    bottom: 100px;
+    top: 100px;
   }
 
   .swpier-indicator-wrapper {
     height: 0;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 
     .swpier-indicator {
       display: flex;
