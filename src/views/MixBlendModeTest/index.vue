@@ -39,7 +39,7 @@ export default {
 <style scoped lang="less">
 .container {
   width: 100vw;
-  height: 100vh;
+  height: 50vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
