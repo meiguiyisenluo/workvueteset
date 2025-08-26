@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <button @click="refresh">refresh</button>
-    <keep-alive include="main-layout">
-      <router-view :key="viewKey"></router-view>
-    </keep-alive>
-  </div>
+  <keep-alive include="main-layout">
+    <router-view :key="viewKey"></router-view>
+  </keep-alive>
 </template>
 <script>
 export default {

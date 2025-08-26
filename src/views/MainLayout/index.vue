@@ -5,9 +5,11 @@
     @slideChangeTransitionEnd="slideChangeTransitionEnd"
   >
     <swiper-slide v-for="item in tabData" :key="item.path">
-      <keep-alive>
-        <component :is="item.name" :ref="item.name"></component>
-      </keep-alive>
+      <div class="scrollWrapper">
+        <keep-alive>
+          <component :is="item.name" :ref="item.name"></component>
+        </keep-alive>
+      </div>
     </swiper-slide>
   </swiper>
 </template>
@@ -130,3 +132,15 @@ export default {
   // },
 }
 </script>
+
+<style lang="less" scoped>
+.scrollWrapper {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  word-break: break-all;
+}
+.scrollWrapper::-webkit-scrollbar {
+  display: none;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div>cloudphone</div>
+  <div>{{ 'cloudphone'.repeat(1000) }}</div>
 </template>
 <script>
 export default {
@@ -18,9 +18,10 @@ export default {
 <style lang="less" scoped>
 div {
   width: 100%;
-  height: 100vh;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  word-break: break-all;
 }
 </style>
