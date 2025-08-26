@@ -3,8 +3,9 @@
     ref="swiper"
     :options="swiperOptions"
     @slideChangeTransitionEnd="slideChangeTransitionEnd"
+    style="height: 100vh"
   >
-    <swiper-slide v-for="item in tabData" :key="item.path">
+    <swiper-slide v-for="item in tabData" :key="item.path" style="height: 100%">
       <div class="scrollWrapper">
         <keep-alive>
           <component :is="item.name" :ref="item.name"></component>
@@ -138,9 +139,16 @@ export default {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  word-break: break-all;
-}
-.scrollWrapper::-webkit-scrollbar {
-  display: none;
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track-piece,
+  &::-webkit-scrollbar-corner,
+  &::-webkit-scrollbar-button {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
 }
 </style>
