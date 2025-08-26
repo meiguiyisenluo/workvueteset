@@ -87,6 +87,10 @@ const routes = [
     path: '/imgTest',
     component: () => import('@/views/imgTest/index.vue'),
   },
+  {
+    path: '/MixBlendModeTest',
+    component: () => import('@/views/MixBlendModeTest/index.vue'),
+  },
 ]
 
 const router = new VueRouter({
