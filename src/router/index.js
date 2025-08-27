@@ -91,6 +91,10 @@ const routes = [
     path: '/MixBlendModeTest',
     component: () => import('@/views/MixBlendModeTest/index.vue'),
   },
+  {
+    path: '/cloudphone2',
+    component: () => import('@/views/MainLayout/cloudphone2.vue'),
+  },
 ]
 
 const router = new VueRouter({

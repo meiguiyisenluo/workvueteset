@@ -72,6 +72,7 @@ export default {
       display: flex;
     }
     .swpier-indicator-item {
+      will-change: transform;
       display: inline-block;
       width: 6px;
       height: 6px;
