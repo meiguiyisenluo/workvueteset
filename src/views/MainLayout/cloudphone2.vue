@@ -1,7 +1,13 @@
 <template>
   <div class="multi-cover">
-    <div class="phone-swipe" :style="{ background: value }">
-      <input type="color" v-model="value" />
+    <div class="phone-swipe">
+      <div class="phone-swipe-inner">
+        <swiper :options="swiperOptions">
+          <swiper-slide v-for="item in 2" :key="item">
+            <phoneCover :id="item" />
+          </swiper-slide>
+        </swiper>
+      </div>
     </div>
 
     <div class="swpier-indicator-wrapper position">
@@ -14,10 +20,14 @@
   </div>
 </template>
 <script>
+import PhoneCover from './PhoneCover.vue'
 export default {
+  components: { PhoneCover },
   data() {
     return {
-      value: '#ffffff',
+      swiperOptions: {
+        nested: true,
+      },
     }
   },
 }
