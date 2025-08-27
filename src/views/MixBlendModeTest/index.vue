@@ -67,7 +67,6 @@ export default {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    border: 1px solid red;
 
     .swpier-indicator {
       display: flex;

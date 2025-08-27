@@ -3,7 +3,7 @@
     <div class="phone-pic__bg">
       <div class="intance-info-box">
         <p>云机{{ id }}</p>
-        <input type="color" @input="onInput" />
+        <input type="color" @input="onInput" :value="background" />
         <input type="file" @change="onChange" />
       </div>
       <div
@@ -23,7 +23,7 @@ export default {
   props: { id: Number },
   data() {
     return {
-      background: '#fff',
+      background: '#ffffff',
       dataSource: '',
     }
   },
