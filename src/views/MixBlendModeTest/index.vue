@@ -67,6 +67,7 @@ export default {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    border: 1px solid red;
 
     .swpier-indicator {
       display: flex;
@@ -75,7 +76,7 @@ export default {
       display: inline-block;
       width: 6px;
       height: 6px;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.5);
       border-radius: 3px;
       margin: 0 3px;
       mix-blend-mode: difference;
