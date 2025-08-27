@@ -16,7 +16,9 @@
 </template>
 <script>
 const cloudphone = () =>
-  import(/* webpackChunkName: "chunk-cloudphone" */ './cloudphone.vue')
+  import(
+    /* webpackChunkName: "chunk-cloudphone" */ '@/views/MixBlendModeTest/index.vue'
+  )
 const find = () => import(/* webpackChunkName: "chunk-find" */ './find.vue')
 const my = () => import(/* webpackChunkName: "chunk-my" */ './my.vue')
 

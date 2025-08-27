@@ -1,17 +1,12 @@
 <template>
-  <div class="container">
-    <div
-      class="bg"
-      :style="{
-        backgroundColor: value,
-      }"
-    >
-      <div class="swpier-indicator-wrapper">
-        <div class="swpier-indicator">
-          <span class="swpier-indicator-item"></span>
-          <span class="swpier-indicator-item active"></span>
-          <span class="swpier-indicator-item"></span>
-        </div>
+  <div class="multi-cover">
+    <div class="phone-swipe">
+      <div class="phone-swipe-inner">
+        <swiper :options="swiperOptions">
+          <swiper-slide v-for="item in 2" :key="item">
+            <phoneCover :id="item" />
+          </swiper-slide>
+        </swiper>
       </div>
     </div>
 
@@ -22,34 +17,49 @@
         <span class="swpier-indicator-item"></span>
       </div>
     </div>
-
-    <h2>请调节背景色{{ value }}</h2>
-    <input type="color" v-model="value" />
   </div>
 </template>
 <script>
+import PhoneCover from './PhoneCover.vue'
 export default {
+  components: { PhoneCover },
   data() {
     return {
-      value: '#000',
+      swiperOptions: {
+        nested: true,
+      },
     }
   },
 }
 </script>
 <style scoped lang="less">
-.container {
+.multi-cover {
   width: 100vw;
-  height: 50vh;
+  height: 100vh;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  .bg {
-    flex: 1;
+  position: relative;
+  isolation: isolate;
+  .phone-swipe {
+    height: 100%;
+    .phone-swipe-inner {
+      height: 100%;
+      /deep/ .swiper-container {
+        height: 100%;
+        position: static;
+        .swiper-wrapper {
+          position: static;
+          .swiper-slide {
+            position: static;
+            height: 100%;
+          }
+        }
+      }
+    }
   }
 
   .position {
-    position: absolute;
-    top: 100px;
+    position: relative;
+    top: -95%;
   }
 
   .swpier-indicator-wrapper {
@@ -65,17 +75,15 @@ export default {
       display: inline-block;
       width: 6px;
       height: 6px;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.2);
       border-radius: 3px;
       margin: 0 3px;
       mix-blend-mode: difference;
     }
     .swpier-indicator-item.active {
       width: 18px;
-      height: 6px;
       opacity: 0.9;
       background: #ffffff;
-      border-radius: 3px;
     }
   }
 }
