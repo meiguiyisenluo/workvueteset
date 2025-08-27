@@ -2,7 +2,11 @@
   <div class="multi-cover">
     <div class="phone-swipe">
       <div class="phone-swipe-inner">
-        <swiper :options="swiperOptions">
+        <swiper
+          ref="swiper"
+          :options="swiperOptions"
+          @slideChange="slideChange"
+        >
           <swiper-slide v-for="item in 2" :key="item">
             <phoneCover :id="item" />
           </swiper-slide>
@@ -12,9 +16,12 @@
 
     <div class="swpier-indicator-wrapper position">
       <div class="swpier-indicator">
-        <span class="swpier-indicator-item"></span>
-        <span class="swpier-indicator-item active"></span>
-        <span class="swpier-indicator-item"></span>
+        <span
+          class="swpier-indicator-item"
+          v-for="(item, idx) in 2"
+          :key="item"
+          :class="{ active: idx === activeIndex }"
+        ></span>
       </div>
     </div>
   </div>
@@ -25,10 +32,16 @@ export default {
   components: { PhoneCover },
   data() {
     return {
+      activeIndex: 0,
       swiperOptions: {
         nested: true,
       },
     }
+  },
+  methods: {
+    slideChange() {
+      this.activeIndex = this.$refs.swiper.swiper.activeIndex
+    },
   },
 }
 </script>
