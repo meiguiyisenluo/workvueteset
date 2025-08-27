@@ -92,7 +92,7 @@ export default {
       background: rgba(255, 255, 255, 0.5);
       border-radius: 3px;
       margin: 0 3px;
-      mix-blend-mode: difference;
+      mix-blend-mode: exclusion;
     }
     .swpier-indicator-item.active {
       width: 18px;
