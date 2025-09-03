@@ -1,11 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    html{
+        /* pointer-events: none; */
+    }
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 100vw;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+    .banner,
+    .kingzoom,
+    .AIshop,
+    .qukan,
+    .quwan,
+    .article {
+        width: 100%;
+        height: 150px;
+        background: #000;
+        margin: 0 0 1rem;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        color: #fff;
+        font-size: 1rem;
+    }
+
+
+    .kingzoom {
+        height: 50px;
+    }
+
+    .article {
+        height: 500px;
+    }
+</style>
+
 <body>
-    发现页
+    <div class="container">
+        <div data-no-pop-event class="banner">banner</div>
+        <div data-no-pop-event class="kingzoom">金刚区</div>
+        <div data-no-pop-event class="AIshop">AI工坊</div>
+        <div data-no-pop-event class="qukan">趣看</div>
+        <div data-no-pop-event class="quwan">趣玩</div>
+        <div data-no-pop-event class="article">文章</div>
+    </div>
+    <script>
+        const container = document.querySelector('.container')
+        const eventHandler = (e) => {
+            const res = e.composedPath().some(_ => {
+                return (_.dataset && _.dataset.noPopEvent) !== undefined
+            })
+            window.parent.changeIframeEvent(!res)
+            // window.parent.postMessage({ source: 'find-sub', payload: !res })
+        }
+        container.addEventListener('click', eventHandler)
+        container.addEventListener('touchstart', eventHandler)
+        container.addEventListener('touchmove', eventHandler)
+        container.addEventListener('touchend', eventHandler)
+        container.addEventListener('mousedown', eventHandler)
+        container.addEventListener('mouseup', eventHandler)
+    </script>
 </body>
+
 </html>
