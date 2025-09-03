@@ -95,6 +95,10 @@ const routes = [
     path: '/cloudphone2',
     component: () => import('@/views/MainLayout/cloudphone2.vue'),
   },
+  {
+    path: '/swiperTest',
+    component: () => import('@/views/swiperTest/Index.vue'),
+  },
 ]
 
 const router = new VueRouter({
