@@ -99,6 +99,10 @@ const routes = [
     path: '/swiperTest',
     component: () => import('@/views/swiperTest/Index.vue'),
   },
+  {
+    path: '/swiperTest2',
+    component: () => import('@/views/swiperTest/Index2.vue'),
+  },
 ]
 
 const router = new VueRouter({

@@ -1,14 +1,8 @@
 <template>
   <div>
-    <swiper ref="swiper" @transitionEnd="transitionEnd">
+    <swiper ref="swiper">
       <swiper-slide>
-        <iframe
-          ref="iframe"
-          src="./index2.html"
-          border="none"
-          :class="{ no_event }"
-          @click="onclickHandler"
-        ></iframe>
+        <iframe src="./index3.html" border="none"></iframe>
       </swiper-slide>
       <swiper-slide>
         <div class="screen">首页</div>
@@ -23,13 +17,11 @@
 <script>
 export default {
   data() {
-    return {
-      no_event: false,
-    }
+    return {}
   },
   created() {
-    window.changeIframeEvent = (e) => {
-      this.no_event = e
+    window.changeIframeEvent = () => {
+      this.$refs.swiper.swiper.slideNext()
     }
     window.addEventListener('message', this.onmessage)
   },
@@ -40,12 +32,6 @@ export default {
     onmessage(res) {
       if (res.data.source !== 'find-sub') return
       this.no_event = res.data.payload
-    },
-    transitionEnd() {
-      this.no_event = false
-    },
-    onclickHandler() {
-      this.no_event = false
     },
   },
 }
@@ -65,12 +51,8 @@ iframe {
   margin: 0;
   padding: 0;
   border: none;
-  pointer-events: auto;
   &::--webkit-scrollbar {
     display: none;
-  }
-  &.no_event {
-    pointer-events: none;
   }
 }
 </style>

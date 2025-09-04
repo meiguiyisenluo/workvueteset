@@ -55,19 +55,34 @@
         <div data-no-pop-event class="article">文章</div>
     </div>
     <script>
-        const eventHandler = (e) => {
-            const res = e.composedPath().some(_ => {
+        let flag = false
+        document.addEventListener('touchstart', (e) => {
+            flag = e.composedPath().some(_ => {
                 return (_.dataset && _.dataset.noPopEvent) !== undefined
             })
-            window.parent.changeIframeEvent(!res)
-            // window.parent.postMessage({ source: 'find-sub', payload: !res })
-        }
-        document.addEventListener('click', eventHandler)
-        document.addEventListener('touchstart', eventHandler)
-        document.addEventListener('touchmove', eventHandler)
-        document.addEventListener('touchend', eventHandler)
-        document.addEventListener('mousedown', eventHandler)
-        document.addEventListener('mouseup', eventHandler)
+
+            const touch = e.touches[0]
+            startX = touch.pageX
+            startY = touch.pageY
+        }, false)
+        document.addEventListener('touchend', e => {
+            const touch = e.changedTouches[0]
+            const endX = touch.pageX
+            const endY = touch.pageY
+
+            const deltaX = endX - startX
+            const deltaY = endY - startY
+
+            // 判断是否主要是横向滑动
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                if (deltaX < -30) {
+                    console.log('👈 用户向左滑动了')
+                    if(!flag) window.parent.changeIframeEvent()
+                } else if (deltaX > 30) {
+                    console.log('👉 用户向右滑动了')
+                }
+            }
+        }, false)
     </script>
 </body>
 
