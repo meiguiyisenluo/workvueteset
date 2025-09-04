@@ -90,9 +90,10 @@ document.addEventListener(
 
     const deltaX = endX - startX
     const deltaY = endY - startY
+    console.log(deltaX, deltaY)
 
     // 判断是否主要是横向滑动
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    if (Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
       if (deltaX < -30) {
         console.log('👈 用户向左滑动了')
         if (flag)
