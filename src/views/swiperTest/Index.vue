@@ -1,13 +1,12 @@
 <template>
   <div>
-    <swiper ref="swiper" @transitionEnd="transitionEnd">
+    <swiper ref="swiper" @transitionEnd="no_event = false">
       <swiper-slide>
         <iframe
           ref="iframe"
-          src="./index2.html"
+          src="/#/cloudfind"
           border="none"
           :class="{ no_event }"
-          @click="onclickHandler"
         ></iframe>
       </swiper-slide>
       <swiper-slide>
@@ -31,22 +30,6 @@ export default {
     window.changeIframeEvent = (e) => {
       this.no_event = e
     }
-    window.addEventListener('message', this.onmessage)
-  },
-  beforeDestroy() {
-    window.removeEventListener('message', this.onmessage)
-  },
-  methods: {
-    onmessage(res) {
-      if (res.data.source !== 'find-sub') return
-      this.no_event = res.data.payload
-    },
-    transitionEnd() {
-      this.no_event = false
-    },
-    onclickHandler() {
-      this.no_event = false
-    },
   },
 }
 </script>

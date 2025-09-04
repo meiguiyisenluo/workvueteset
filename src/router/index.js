@@ -103,6 +103,10 @@ const routes = [
     path: '/swiperTest2',
     component: () => import('@/views/swiperTest/Index2.vue'),
   },
+  {
+    path: '/cloudfind',
+    component: () => import('@/views/find/Index.vue'),
+  },
 ]
 
 const router = new VueRouter({

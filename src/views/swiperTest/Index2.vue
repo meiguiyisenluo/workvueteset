@@ -2,7 +2,7 @@
   <div>
     <swiper ref="swiper">
       <swiper-slide>
-        <iframe src="./index3.html" border="none"></iframe>
+        <iframe src="/#/cloudfind" border="none"></iframe>
       </swiper-slide>
       <swiper-slide>
         <div class="screen">首页</div>
@@ -20,19 +20,9 @@ export default {
     return {}
   },
   created() {
-    window.changeIframeEvent = () => {
+    window.changeSlide = () => {
       this.$refs.swiper.swiper.slideNext()
     }
-    window.addEventListener('message', this.onmessage)
-  },
-  beforeDestroy() {
-    window.removeEventListener('message', this.onmessage)
-  },
-  methods: {
-    onmessage(res) {
-      if (res.data.source !== 'find-sub') return
-      this.no_event = res.data.payload
-    },
   },
 }
 </script>
