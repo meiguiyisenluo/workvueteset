@@ -27,9 +27,17 @@ export default {
     }
   },
   created() {
-    window.changeIframeEvent = (e) => {
-      this.no_event = e
-    }
+    window.addEventListener('message', this.onMessage)
+  },
+  beforeDestory() {
+    window.removeEventListener('message', this.onMessage)
+  },
+  methods: {
+    onMessage(e) {
+      const { source = '', type = '', payload = false } = e.data || {}
+      if (source !== 'sub-find') return
+      if (type === 'changeIframeEvent') this.no_event = payload
+    },
   },
 }
 </script>

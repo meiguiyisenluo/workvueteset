@@ -69,7 +69,11 @@ document.addEventListener(
     // }
 
     flag = !noPopZone
-    window.parent.changeIframeEvent(flag)
+    window.parent.postMessage({
+      source: 'sub-find',
+      type: 'changeIframeEvent',
+      payload: flag,
+    })
 
     const touch = e.touches[0]
     startX = touch.pageX
@@ -91,7 +95,8 @@ document.addEventListener(
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
       if (deltaX < -30) {
         console.log('👈 用户向左滑动了')
-        if (flag) window.parent.changeSlide()
+        if (flag)
+          window.parent.postMessage({ source: 'sub-find', type: 'changeSlide' })
       } else if (deltaX > 30) {
         console.log('👉 用户向右滑动了')
       }

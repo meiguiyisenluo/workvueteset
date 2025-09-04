@@ -16,13 +16,18 @@
 
 <script>
 export default {
-  data() {
-    return {}
-  },
   created() {
-    window.changeSlide = () => {
-      this.$refs.swiper.swiper.slideNext()
-    }
+    window.addEventListener('message', this.onMessage)
+  },
+  beforeDestory() {
+    window.removeEventListener('message', this.onMessage)
+  },
+  methods: {
+    onMessage(e) {
+      const { source = '', type = '' } = e.data || {}
+      if (source !== 'sub-find') return
+      if (type === 'changeSlide') this.$refs.swiper.swiper.slideNext()
+    },
   },
 }
 </script>
