@@ -48,6 +48,10 @@ const routes = [
     component: () => import('@/views/MainLayout/index.vue'),
   },
   {
+    path: '/inputfileTest',
+    component: () => import('@/views/inputfileTest/index.vue'),
+  },
+  {
     path: '/huangyongTest',
     component: () => import('@/views/huangyongTest/index.vue'),
   },
