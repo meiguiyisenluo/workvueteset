@@ -126,7 +126,29 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  console.log(to.query)
+  console.log(to.query.token)
+  if (to.query.token) {
+    console.log(removeSSOParam(to.query))
+    // https://192.168.0.9:8001/#/?channelSrc=02040&loginType=0&token=ssoToken&activityUrl=https%3A%2F%2Fmail.10086.cn%2Fs%3Ffunc%3Dlogin%3AauthTokenPE%26clientId%3D10110%26token%3D%7B%7BssoTk%7D%7D%26targetSourceId%3D001003%26loginSuccessUrl%3Dhttps%3A%2F%2Fhtml5.mail.10086.cn%2Fhtml%2Frestructure%2Findex.html%23%2Fassistant%3FclientId%3D10110%26channelid%3D900529%26token%3D%7B%7BssoTk%7D%7D%26channelSrc%3Dred-cloudphone-003
+    // https://192.168.0.9:8001/#/?channelSrc=02040&loginType=0&token=ssoToken&activityUrl=https://mail.10086.cn/s?func=login:authTokenPE&clientId=10110&token={{ssoTk}}&targetSourceId=001003&loginSuccessUrl=https://html5.mail.10086.cn/html/restructure/index.html#/assistant?clientId=10110&channelid=900529&token={{ssoTk}}&channelSrc=red-cloudphone-003
+  }
   next()
+})
+
+// 移除单点登录参数
+function removeSSOParam(param) {
+  const query = { ...param }
+  delete query.token // 单点登录token
+  delete query.loginType // 单点登录类型
+  delete query.cmccApp // 一级掌通登录标志
+  return query
+}
+
+router.afterEach((to) => {
+  const { activityUrl } = to.query
+  // window.location.replace(activityUrl)
+  console.log(activityUrl)
 })
 
 export default router
