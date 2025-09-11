@@ -37,6 +37,7 @@
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^3.1.3",
     "vue-clipboard2": "^0.3.1",
+    "vue-cropper": "^0.6.5",
     "vue-router": "^3.4.5",
     "vue-seamless-scroll": "^1.1.23",
     "vueg-history": "^1.6.0",

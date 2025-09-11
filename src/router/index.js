@@ -115,6 +115,10 @@ const routes = [
     path: '/renderTest',
     component: () => import('@/views/renderTest/Index.vue'),
   },
+  {
+    path: '/cropperjsTest',
+    component: () => import('@/views/cropperjsTest/Index.vue'),
+  },
 ]
 
 const router = new VueRouter({
