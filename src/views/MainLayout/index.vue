@@ -16,7 +16,7 @@
 </template>
 <script>
 const cloudphone = () =>
-  import(/* webpackChunkName: "chunk-cloudphone" */ './cloudphone2.vue')
+  import(/* webpackChunkName: "chunk-cloudphone" */ './cloudphone.vue')
 const find = () => import(/* webpackChunkName: "chunk-find" */ './find.vue')
 const my = () => import(/* webpackChunkName: "chunk-my" */ './my.vue')
 

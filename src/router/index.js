@@ -111,10 +111,18 @@ const routes = [
     path: '/cloudfind',
     component: () => import('@/views/find/Index.vue'),
   },
+  {
+    path: '/renderTest',
+    component: () => import('@/views/renderTest/Index.vue'),
+  },
 ]
 
 const router = new VueRouter({
   routes,
+})
+
+router.beforeEach((to, from, next) => {
+  next()
 })
 
 export default router
