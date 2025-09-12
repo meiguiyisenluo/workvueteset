@@ -5,7 +5,6 @@ const EditImageNode = Vue.extend(EditImage)
 export default {
   install() {
     Vue.prototype.$EditImage = (url) => {
-      console.log(url)
       return new Promise((resolve, reject) => {
         const instance = new EditImageNode({
           propsData: { url },
@@ -23,7 +22,6 @@ export default {
             },
           },
         })
-        console.log(instance)
         instance.$mount()
         document.body.appendChild(instance.$el)
       })
