@@ -15,6 +15,9 @@ Vue.component(ExtImage.name, ExtImage)
 import needLogin from '@/mixins/needLogin'
 Vue.mixin(needLogin)
 
+import EditImage from '@/components/EditImage'
+Vue.use(EditImage)
+
 new Vue({
   router,
   store,

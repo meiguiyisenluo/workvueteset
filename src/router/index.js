@@ -124,6 +124,10 @@ const routes = [
     path: '/urlsafebase64',
     component: () => import('@/views/urlsafebase64/Index.vue'),
   },
+  {
+    path: '/myTest',
+    component: () => import('@/views/MainLayout/my.vue'),
+  },
 ]
 
 const router = new VueRouter({

@@ -1,17 +1,16 @@
 <template>
-  <transition name="fade">
-    <div class="container" v-show="visible">
-      <div class="nav">
-        <div class="btn" @click="close">取消</div>
-        <div class="btn primary" @click="confirm">确定</div>
-      </div>
-      <vueCropper
-        class="cropper_root"
-        ref="cropper"
-        v-bind="option"
-      ></vueCropper>
+  <div class="container">
+    <div class="nav">
+      <div class="btn" @click="oncancel">取消</div>
+      <div class="btn primary" @click="confirm">确定</div>
     </div>
-  </transition>
+    <vueCropper
+      class="cropper_root"
+      ref="cropper"
+      v-bind="option"
+      :img="url"
+    ></vueCropper>
+  </div>
 </template>
 <script>
 // @see:https://www.npmjs.com/package/vue-cropper/v/0.4.7
@@ -20,12 +19,12 @@ export default {
   components: {
     VueCropper,
   },
+  props: {
+    url: String,
+  },
   data() {
     return {
-      resolve: undefined,
-      visible: false,
       option: {
-        img: '',
         outputSize: 1,
         outputType: 'png',
         autoCrop: true,
@@ -35,18 +34,12 @@ export default {
     }
   },
   methods: {
-    edit(img) {
-      this.option.img = img
-      this.visible = true
-      return new Promise((resolve) => (this.resolve = resolve))
-    },
-    close() {
-      this.visible = false
+    oncancel() {
+      this.reject(new Error('用户取消'))
     },
     confirm() {
       this.$refs.cropper.getCropBlob((data) => {
         this.resolve(data)
-        this.visible = false
       })
     },
   },
@@ -55,6 +48,7 @@ export default {
 <style scoped lang="less">
 .container {
   width: 100%;
+  height: 100%;
   overflow: hidden;
   height: 100vh;
   position: absolute;
