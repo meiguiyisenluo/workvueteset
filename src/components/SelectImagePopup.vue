@@ -76,12 +76,11 @@ export default {
 
     selectImage() {
       const typeCapture = {
-        camera: 'user',
-        album: '',
+        camera: 'environment',
       }
       const input = document.createElement('input')
       input.type = 'file'
-      input.capture = typeCapture[this.type]
+      if (this.type !== 'album') input.capture = typeCapture[this.type]
       input.click()
       input.onchange = (e) => {
         this.visible = false
