@@ -4,6 +4,9 @@ import store from '@/store'
 import App from './App.vue'
 import '@/plugins/vant'
 import '@/plugins/swiper'
+import remUtils from '@/utils/rem.js'
+
+remUtils.init()
 
 // 兼容pag格式的图片组件
 import ExtImage from './components/ExtImage/Index.vue'
