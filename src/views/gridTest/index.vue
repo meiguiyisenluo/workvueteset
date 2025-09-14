@@ -1,19 +1,66 @@
 <template>
-  <div class="contaner">
-    <div class="item" v-for="i in 900" :key="i">{{ i }}</div>
-    <div class="item">
-      六王毕，四海一，蜀山兀，阿房出。覆压三百余里，隔离天日。骊山北构而西折，直走咸阳。二川溶溶，流入宫墙。五步一楼，十步一阁；廊腰缦回，檐牙高啄；各抱地势，钩心斗角。盘盘焉，囷囷焉，蜂房水涡，矗不知其几千万落。长桥卧波，未云何龙？复道行空，不霁何虹？高低冥迷，不知西东。歌台暖响，春光融融；舞殿冷袖，风雨凄凄。一日之内，一宫之间，而气候不齐。
-      妃嫔媵嫱，王子皇孙，辞楼下殿，辇来于秦。朝歌夜弦，为秦宫人。明星荧荧，开妆镜也；绿云扰扰，梳晓鬟也；渭流涨腻，弃脂水也；烟斜雾横，焚椒兰也。雷霆乍惊，宫车过也；辘辘远听，杳不知其所之也。一肌一容，尽态极妍，缦立远视，而望幸焉；有不得见者三十六年。燕赵之收藏，韩魏之经营，齐楚之精英，几世几年，剽掠其人，倚叠如山；一旦不能有，输来其间，鼎铛玉石，金块珠砾，弃掷逦迤，秦人视之，亦不甚惜。
-      嗟乎！一人之心，千万人之心也。秦爱纷奢，人亦念其家。奈何取之尽锱铢，用之如泥沙？使负栋之柱，多于南亩之农夫；架梁之椽，多于机上之工女；瓦缝参差，多于周身之帛缕；直栏横槛多于九土之城郭；钉头磷磷，多于在庾之粟粒；管弦呕哑，多于市人之言语。使天下之人，不敢言而敢怒。独夫之心，日益骄固。戍卒叫，函谷举，楚人一炬，可怜焦土！
-      呜呼！灭六国者六国也，非秦也。族秦者秦也，非天下也。嗟夫！使六国各爱其人，则足以拒秦；使秦复爱六国之人，则递三世可至万世而为君，谁得而族灭也？秦人不暇自哀，而后人哀之；后人哀之而不鉴之，亦使后人而复哀后人也。
-    </div>
-  </div>
+  <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+    <van-list
+      v-model="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      @load="onLoad"
+      class="contaner"
+    >
+      <div class="item" v-for="item in list" :key="item">{{ item }}</div>
+    </van-list>
+  </van-pull-refresh>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      list: [],
+      loading: false,
+      finished: false,
+      refreshing: false,
+    }
+  },
+  methods: {
+    onLoad() {
+      if (this.refreshing) {
+        this.list = []
+        this.refreshing = false
+      }
+      // 异步更新数据
+      // setTimeout 仅做示例，真实场景中一般为 ajax 请求
+      setTimeout(() => {
+        for (let i = 0; i < 100; i++) {
+          this.list.push(this.list.length + 1)
+        }
+
+        // 加载状态结束
+        this.loading = false
+
+        // 数据全部加载完成
+        if (this.list.length >= 100000) {
+          this.finished = true
+        }
+      }, 100)
+    },
+    onRefresh() {
+      // 清空列表数据
+      this.finished = false
+
+      // 重新加载数据
+      // 将 loading 设置为 true，表示处于加载状态
+      this.loading = true
+      this.onLoad()
+    },
+  },
+}
+</script>
 
 <style lang="less" scoped>
 .contaner {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   grid-auto-rows: minmax(100px, auto);
   gap: 10px;
   padding: 10px;
