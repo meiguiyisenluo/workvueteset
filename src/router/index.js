@@ -128,6 +128,10 @@ const routes = [
     path: '/myTest',
     component: () => import('@/views/MainLayout/my.vue'),
   },
+  {
+    path: '/gridTest',
+    component: () => import('@/views/gridTest/index.vue'),
+  },
 ]
 
 const router = new VueRouter({
@@ -135,7 +139,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to.query)
   if (to.query.token) {
     removeSSOParam(to.query)
   }
@@ -144,10 +147,9 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach((to) => {
   const { activityUrl } = to.query
-  console.log(activityUrl)
   if (activityUrl) {
     const original = atob(decode(activityUrl)) // → 还原原始字符串
-    console.log(original)
+    original
   }
 })
 
