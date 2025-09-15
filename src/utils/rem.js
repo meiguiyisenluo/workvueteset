@@ -14,8 +14,7 @@ const remUtils = {
     this.maxWidth = width
     this.updateRem()
   },
-  updateRem(e) {
-    console.log(e)
+  updateRem() {
     // 750: 设计稿的宽度; 100: 设计稿宽度下一个 rem 的值
     // 源码样式中的数值(rem) = 设计稿数值(px) / 100
     const designWidth = 750

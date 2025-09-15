@@ -1,7 +1,7 @@
+import { decode } from 'url-safe-base64'
+import { Toast } from 'vant'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { Toast } from 'vant'
-import { decode } from 'url-safe-base64'
 
 // 在升级了Vue-Router版本到到3.1.0及以上之后，页面在跳转路由时控制台会报Uncaught (in promise)的问题
 const originalPush = VueRouter.prototype.push
@@ -131,6 +131,10 @@ const routes = [
   {
     path: '/gridTest',
     component: () => import('@/views/gridTest/index.vue'),
+  },
+  {
+    path: '/gridTest2',
+    component: () => import('@/views/gridTest/index2.vue'),
   },
 ]
 
