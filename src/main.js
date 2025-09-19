@@ -3,9 +3,20 @@ import router from '@/router'
 import store from '@/store'
 import App from './App.vue'
 import '@/plugins/vant'
+import '@/plugins/swiper'
+import remUtils from '@/utils/rem.js'
 
+remUtils.init()
+
+// 兼容pag格式的图片组件
 import ExtImage from './components/ExtImage/Index.vue'
 Vue.component(ExtImage.name, ExtImage)
+
+import needLogin from '@/mixins/needLogin'
+Vue.mixin(needLogin)
+
+import EditImage from '@/components/EditImage'
+Vue.use(EditImage)
 
 new Vue({
   router,

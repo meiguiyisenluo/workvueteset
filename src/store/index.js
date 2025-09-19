@@ -5,20 +5,22 @@ import VuexPersist from 'vuex-persist/dist/umd/index.js' // 引入 umd 的格式
 Vue.use(Vuex)
 
 const vuexLocal = new VuexPersist({
-  modules: [
-  ],
+  modules: [],
   storage: window.localStorage, //可选，localStorage/sessionStorage/indexDB
   key: 'vuex-mcloudGame',
 })
 
-
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state: {
+    token: null, // 用户登录 token
   },
-  getters:{},
-  mutations:{},
-  actions: {
+  getters: {},
+  mutations: {
+    setToken(state, token) {
+      state.token = token
+    },
   },
+  actions: {},
   plugins: [vuexLocal.plugin],
 })

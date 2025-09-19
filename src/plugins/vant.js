@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import vanDialog from './vanDialog'
+import vanPopup from './vanPopup'
 import {
   AddressEdit,
   AddressList,
@@ -168,3 +170,13 @@ Vue.use(AddressEdit)
   .use(Cascader)
   .use(CountDown)
   .use(Popover)
+  .use({
+    install() {
+      Vue.component(vanDialog.name, vanDialog)
+    },
+  })
+  .use({
+    install() {
+      Vue.component(vanPopup.name, vanPopup)
+    },
+  })

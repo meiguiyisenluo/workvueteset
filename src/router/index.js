@@ -1,6 +1,7 @@
+import { decode } from 'url-safe-base64'
+import { Toast } from 'vant'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { Toast } from 'vant'
 
 // 在升级了Vue-Router版本到到3.1.0及以上之后，页面在跳转路由时控制台会报Uncaught (in promise)的问题
 const originalPush = VueRouter.prototype.push
@@ -44,7 +45,23 @@ wrapLoading(() => Promise.resolve())
 
 const routes = [
   {
-    path: '/',
+    path: '/:com(cloudphone|my|find)',
+    component: () => import('@/views/MainLayout/index.vue'),
+  },
+  {
+    path: '/inputfileTest',
+    component: () => import('@/views/inputfileTest/index.vue'),
+  },
+  {
+    path: '/huangyongTest',
+    component: () => import('@/views/huangyongTest/index.vue'),
+  },
+  {
+    path: '/login',
+    component: () => import('@/views/Login/Index.vue'),
+  },
+  {
+    path: '/test',
     component: () => import('@/views/test.vue'),
   },
   {
@@ -75,10 +92,78 @@ const routes = [
     path: '/imgTest',
     component: () => import('@/views/imgTest/index.vue'),
   },
+  {
+    path: '/MixBlendModeTest',
+    component: () => import('@/views/MixBlendModeTest/index.vue'),
+  },
+  {
+    path: '/cloudphone2',
+    component: () => import('@/views/MainLayout/cloudphone2.vue'),
+  },
+  {
+    path: '/swiperTest',
+    component: () => import('@/views/swiperTest/Index.vue'),
+  },
+  {
+    path: '/swiperTest2',
+    component: () => import('@/views/swiperTest/Index2.vue'),
+  },
+  {
+    path: '/cloudfind',
+    component: () => import('@/views/find/Index.vue'),
+  },
+  {
+    path: '/renderTest',
+    component: () => import('@/views/renderTest/Index.vue'),
+  },
+  {
+    path: '/cropperjsTest',
+    component: () => import('@/views/cropperjsTest/Index.vue'),
+  },
+  {
+    path: '/urlsafebase64',
+    component: () => import('@/views/urlsafebase64/Index.vue'),
+  },
+  {
+    path: '/myTest',
+    component: () => import('@/views/MainLayout/my.vue'),
+  },
+  {
+    path: '/gridTest',
+    component: () => import('@/views/gridTest/index.vue'),
+  },
+  {
+    path: '/gridTest2',
+    component: () => import('@/views/gridTest/index2.vue'),
+  },
 ]
 
 const router = new VueRouter({
   routes,
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.query.token) {
+    removeSSOParam(to.query)
+  }
+  next()
+})
+
+router.afterEach((to) => {
+  const { activityUrl } = to.query
+  if (activityUrl) {
+    const original = atob(decode(activityUrl)) // → 还原原始字符串
+    original
+  }
+})
+
+// 移除单点登录参数
+function removeSSOParam(param) {
+  const query = { ...param }
+  delete query.token // 单点登录token
+  delete query.loginType // 单点登录类型
+  delete query.cmccApp // 一级掌通登录标志
+  return query
+}
 
 export default router
