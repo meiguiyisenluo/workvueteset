@@ -49,6 +49,14 @@ const routes = [
     component: () => import('@/views/MainLayout/index.vue'),
   },
   {
+    path: '/webAnimation',
+    component: () => import('@/views/webAnimation/index.vue'),
+  },
+  {
+    path: '/loading1',
+    component: () => import('@/views/loading1/index.vue'),
+  },
+  {
     path: '/inputfileTest',
     component: () => import('@/views/inputfileTest/index.vue'),
   },
