@@ -1,10 +1,10 @@
-import Vue from 'vue'
+import '@/plugins/swiper'
+import '@/plugins/vant'
 import router from '@/router'
 import store from '@/store'
-import App from './App.vue'
-import '@/plugins/vant'
-import '@/plugins/swiper'
 import remUtils from '@/utils/rem.js'
+import Vue from 'vue'
+import App from './App.vue'
 
 remUtils.init()
 
@@ -17,6 +17,9 @@ Vue.mixin(needLogin)
 
 import EditImage from '@/components/EditImage'
 Vue.use(EditImage)
+
+import portalvue from 'portal-vue'
+Vue.use(portalvue)
 
 new Vue({
   router,

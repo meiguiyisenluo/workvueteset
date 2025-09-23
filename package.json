@@ -27,6 +27,7 @@
     "lodash.clonedeep": "^4.5.0",
     "lodash.debounce": "^4.0.8",
     "normalize.css": "^8.0.1",
+    "portal-vue": "^2.1.7",
     "postcss": "^8.1.1",
     "postcss-loader": "^4.0.3",
     "qs": "^6.10.1",
