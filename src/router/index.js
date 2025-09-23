@@ -49,6 +49,14 @@ const routes = [
     component: () => import('@/views/MainLayout/index.vue'),
   },
   {
+    path: '/portalvueTestCloudphone',
+    component: () => import('@/views/portalvueTest/index.vue'),
+  },
+  {
+    path: '/portalvueTestFind',
+    component: () => import('@/views/portalvueTest/index.vue'),
+  },
+  {
     path: '/webAnimation',
     component: () => import('@/views/webAnimation/index.vue'),
   },
