@@ -136,6 +136,10 @@ const routes = [
     path: '/gridTest2',
     component: () => import('@/views/gridTest/index2.vue'),
   },
+  {
+    path: '/videoFirstFrameTest',
+    component: () => import('@/views/videoFirstFrameTest/index.vue'),
+  },
 ]
 
 const router = new VueRouter({
