@@ -49,6 +49,10 @@ const routes = [
     component: () => import('@/views/MainLayout/index.vue'),
   },
   {
+    path: '/PopupVisibleScheduler',
+    component: () => import('@/views/PopupVisibleScheduler/index.vue'),
+  },
+  {
     path: '/portalvueTestCloudphone',
     component: () => import('@/views/portalvueTest/index.vue'),
   },
