@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import { PAGInit } from 'libpag'
+// import { PAGInit } from 'libpag'
 
-const PAGP = PAGInit()
+const PAGP = Promise.reject()
 
 export default {
   props: {
