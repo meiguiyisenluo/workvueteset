@@ -49,6 +49,10 @@ const routes = [
     component: () => import('@/views/MainLayout/index.vue'),
   },
   {
+    path: '/cssUnitTest',
+    component: () => import('@/views/cssUnitTest/index.vue'),
+  },
+  {
     path: '/PopupVisibleScheduler',
     component: () => import('@/views/PopupVisibleScheduler/index.vue'),
   },
