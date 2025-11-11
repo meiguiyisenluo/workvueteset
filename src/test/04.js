@@ -17,9 +17,9 @@ const fetchs = Array.from(
       .catch((_) => ({ id: i, data: _ }))
 )
 
-const fetchConcurrency = (taskQueue) => {
+const fetchConcurrency = (taskQueue, options = {}) => {
+  const limit = options?.limit ?? 3
   return new Promise((resolve) => {
-    const limit = 3
     let activeTasks = []
     let taskId = 0
 
@@ -50,7 +50,7 @@ const fetchConcurrency = (taskQueue) => {
   })
 }
 
-fetchConcurrency(fetchs).then((res) => {
+fetchConcurrency(fetchs, { limit: 2 }).then((res) => {
   console.log(
     'final result: ',
     res.sort((a, b) => a.id - b.id)
