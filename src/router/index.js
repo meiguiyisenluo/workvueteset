@@ -57,6 +57,10 @@ const routes = [
     component: () => import('@/views/positionStickyTest/index.vue'),
   },
   {
+    path: '/customshui',
+    component: () => import('@/views/customshui/index.vue'),
+  },
+  {
     path: '/cssUnitTest',
     component: () => import('@/views/cssUnitTest/index.vue'),
   },
