@@ -49,6 +49,14 @@ const routes = [
     component: () => import('@/views/MainLayout/index.vue'),
   },
   {
+    path: '/heightTest',
+    component: () => import('@/views/heightTest/index.vue'),
+  },
+  {
+    path: '/positionStickyTest',
+    component: () => import('@/views/positionStickyTest/index.vue'),
+  },
+  {
     path: '/cssUnitTest',
     component: () => import('@/views/cssUnitTest/index.vue'),
   },
