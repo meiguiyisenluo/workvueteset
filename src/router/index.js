@@ -49,6 +49,10 @@ const routes = [
     component: () => import('@/views/MainLayout/index.vue'),
   },
   {
+    path: '/connectionTest',
+    component: () => import('@/views/connectionTest/index.vue'),
+  },
+  {
     path: '/heightTest',
     component: () => import('@/views/heightTest/index.vue'),
   },
